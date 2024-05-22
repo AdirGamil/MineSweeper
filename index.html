@@ -7,19 +7,28 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body onload="onInit()">
-    <div class="lifeBoard"></div>
-
-    <div class="block"> COMPLETED IN: <span class="timer">0.00</span></div>
-
+    
+    
     <div class="level">
         <h3>CHOOSE DIFFICULTY</h3>
         <div class="btn-dif-container">
-            <button onclick="chooseLvlSize(4, 2)">Beginner</button>
+            <button onclick="chooseLvlSize(4, 3)">Beginner</button>
             <button onclick="chooseLvlSize(8, 14)">MEDIUM</button>
             <button onclick="chooseLvlSize(12, 32)">Exprert</button>
         </div>
     </div>
-
+    
+    <div class="mid-container">
+        
+        
+        <div class="lifeBoard">Your Life : <span>3</span></div>
+        <div class="block"> COMPLETED IN: <span class="timer">0.00</span></div>
+        <div class="score">Your Score: <span>0</span></div>
+    </div>
+    <div class="modal">
+        <h3 class="msg"></h3>
+        <button class="restart-btn" onclick="onInit()">😊</button>
+    </div>
     
    <div class="game">
        <table>
@@ -30,7 +39,6 @@
 
 <div class="bottom">Created by Adir Gamil</div>
 
-    
 
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>

@@ -3,17 +3,20 @@ console.log('Sprint')
 
 const MINE = '💣'
 const EMPTY = ' '
+const FLAG = '🚩'
 
 var gBoard
 var gLevel
 var gSize
 var gGame
 var gLife = 3
-var gStartTime
+var gStartTime = false
+var isTimerStarted
+var gTimerInterval
 
 var gLevel = {
   SIZE: 4,
-  MINES: 2,
+  MINES: 3,
 }
 var gGame = {
   isOn: false,
@@ -24,6 +27,7 @@ var gGame = {
 
 function onInit() {
   console.log('Game init')
+  
 
   gBoard = buildBoard(gLevel.SIZE)
   createMinesOnBoard(gBoard, gLevel.MINES)
@@ -69,7 +73,8 @@ function renderBoard(board) {
         }
       }
 
-      strHTML += `<td class="cell ${cellClass}" onclick="onCellClicked(this,${i},${j})">${cellContent}</td>`
+      strHTML += `<td class="cell ${cellClass}" 
+      onclick="onCellClicked(this,${i},${j})">${cellContent}</td>`
     }
     strHTML += '</tr>'
   }
@@ -102,13 +107,11 @@ function getMineNegsCount(cellI, cellJ) {
 
 function onCellClicked(elCell, i, j) {
   var cell = gBoard[i][j]
-  // if (gGame.isOn) {
-  //   startTimer()
-  // } else if (!gLife) {
-  //   clearInterval(gTimerInterval)
-  // }
-
   if (cell.isShown) return
+
+  if (!isTimerStarted) {
+    startTimer()
+  }
 
   cell.isShown = true
   if (cell.isMine) {
@@ -116,16 +119,25 @@ function onCellClicked(elCell, i, j) {
     gLife--
     lifeDown()
   } else {
+    // elCell.classList.add('empty')
     gGame.shownCount++
+    var score = gGame.shownCount++
+    // console.log('score:',score);
+    document.querySelector('.score span').innerText = `${score}`
+  }
+  if (!gLife) {
+    lifeDown()
   }
   renderBoard(gBoard)
 }
 
 function lifeDown() {
-  var life = document.querySelector('.lifeBoard')
-  life.innerHTML = `your times left ${gLife}`
+  var life = document.querySelector('.lifeBoard span')
+  life.innerText = `${gLife}`
   if (gLife === 0) {
-    life.innerHTML = `Play Again!`
+    clearInterval(gTimerInterval)
+    document.querySelector('.score').innerText = `Game Over !`
+    document.querySelector('.restart-btn').innerText = `🤯`
   }
 }
 
@@ -142,3 +154,33 @@ function createMinesOnBoard(board, mines) {
     }
   }
 }
+
+
+// function restartGame() {
+//   gLevel = {
+//     SIZE: 4,
+//     MINES: 3,
+//   }
+//   gGame = {
+//     isOn: false,
+//     shownCount: 0,
+//     markedCount: 0,
+//     secsPassed: 0,
+//   }
+//   gLife = 3
+//   clearInterval(gTimerInterval)
+// }
+
+
+// #####################TODO####################################################
+//  1. First click is never a Mine
+// The first clicked cell is never a mine
+// HINT: We need to start with an empty matrix (no mines) and
+// then place the mines and count the neighbors only on first
+// click
+
+// 2. Sunglasses – WIN 
+
+// 3. put flag in right click.
+
+// 4. fix the restart game, reset the all modal

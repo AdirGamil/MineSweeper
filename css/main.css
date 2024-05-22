@@ -5,6 +5,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+    font-weight: bold;
 }
 
 .board {
@@ -56,31 +58,61 @@ td:hover {
     text-align: center;
 }
 
-button {
+.btn-dif-container button {
     /* width: 20%; */
     margin: auto;
     padding: 6px 14px;
-    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-    font-weight: bold;
     border-radius: 6px;
     border: none;
     cursor: pointer;
-
+    font-size: 20px;
     background: #6e6d70;
-    box-shadow:
-        0px 0.5px 1px rgba(0, 0, 0, 0.1),
-        inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5),
-        0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
     color: #dfdedf;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+    transition: 0.5s;
 }
 
-button:focus {
-    box-shadow:
-        inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2),
-        0px 0.5px 1px rgba(0, 0, 0, 0.1),
-        0px 0px 0px 3.5px rgba(224, 226, 228, 0.5);
-    outline: 0;
+.btn-dif-container button:hover {
+    
+ background-color: white;
+ padding: 12px 28px;
+ color: black;
+ transition: 0.5s;
 }
+
+.btn-dif-container button:focus {
+    
+    background-color: lightcoral;
+    padding: 12px 28px;
+    color: white;
+    transition: 0.5s;
+   }
+   
+
+   
+  
+  .restart-btn {
+    margin-top: 20px;
+    background-color: lightskyblue;
+    padding: 10px;
+    font-size: 40px;
+    cursor: pointer;
+    border: 1px solid white;
+    transition: 0.5s;
+}
+
+.restart-btn:hover{
+      font-size: 70px;
+      transition: 0.5s;
+
+  }
+
+  .mid-container{
+    margin-top: 20px;
+  }
+  .block{
+    margin: 10px;
+  }
+
+  .empty {
+    background-color: lightgray;
+  }
