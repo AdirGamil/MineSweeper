@@ -1,118 +1,126 @@
 body {
-    background-color: lightblue;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-    font-weight: bold;
+  background-color: lightblue;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  font-weight: bold;
 }
 
 .board {
-    display: inline-block; 
-    border-collapse: collapse; 
-    background-color: lightgoldenrodyellow;
+  display: inline-block;
+  border-collapse: collapse;
+  background-color: lightgoldenrodyellow;
 }
 
 .board td {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5em;
-    cursor: pointer;
-    text-align: center;
-    border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5em;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid black;
 }
 
 td:hover {
- background-color: lightgreen;
- transition: 0.5s;
+  background-color: lightgreen;
+  transition: 0.5s;
 }
-
 
 .game {
-    margin: auto;
-    padding: 10px;
+  margin: auto;
+  padding: 10px;
 }
 
-.bottom{
-    background-color: lightgreen;
-    width: 50%;
-    border: 2px solid blue;
-    padding: 10px;
-    text-align: center;
-    
+.bottom {
+  background-color: lightgreen;
+  width: 50%;
+  border: 2px solid blue;
+  padding: 10px;
+  text-align: center;
 }
 
-.mine{
-    background-color: red;
+.mine {
+  background-color: red;
 }
 
 .block {
-    margin: auto;
-    text-align: center;
+  margin: auto;
+  text-align: center;
 }
 
 .timer {
-    margin: auto;
-    text-align: center;
+  margin: auto;
+  text-align: center;
+}
+
+.btn-dif-container {
+  margin: 10px;
 }
 
 .btn-dif-container button {
-    /* width: 20%; */
-    margin: auto;
-    padding: 6px 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    background: #6e6d70;
-    color: #dfdedf;
-    transition: 0.5s;
+  /* width: 20%; */
+  margin: auto;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  background: #6e6d70;
+  color: #dfdedf;
+  transition: 0.5s;
 }
 
 .btn-dif-container button:hover {
-    
- background-color: white;
- padding: 12px 28px;
- color: black;
- transition: 0.5s;
+  background-color: white;
+  padding: 12px 28px;
+  color: black;
+  transition: 0.5s;
 }
 
 .btn-dif-container button:focus {
-    
-    background-color: lightcoral;
-    padding: 12px 28px;
-    color: white;
-    transition: 0.5s;
-   }
-   
-
-   
-  
-  .restart-btn {
-    margin-top: 20px;
-    background-color: lightskyblue;
-    padding: 10px;
-    font-size: 40px;
-    cursor: pointer;
-    border: 1px solid white;
-    transition: 0.5s;
+  background-color: lightcoral;
+  padding: 12px 28px;
+  color: white;
+  transition: 0.5s;
 }
 
-.restart-btn:hover{
-      font-size: 70px;
-      transition: 0.5s;
+.restart-btn {
+  margin-top: 20px;
+  background-color: lightskyblue;
+  padding: 10px;
+  font-size: 40px;
+  cursor: pointer;
+  border: 1px solid white;
+  transition: 0.5s;
+}
 
-  }
+.restart-btn:hover {
+  font-size: 70px;
+  transition: 0.5s;
+}
 
-  .mid-container{
-    margin-top: 20px;
-  }
-  .block{
-    margin: 10px;
-  }
+.mid-container {
+  margin-top: 20px;
+}
+.block {
+  margin: 10px;
+}
 
-  .empty {
-    background-color: lightgray;
-  }
+.cell-shown {
+  background-color: lightgrey;
+}
+
+.darkMode {
+  font-size: 30px;
+  background-color: black;
+  transition: 1s;
+}
+
+.lightMode {
+  font-size: 30px;
+  background-color: white;
+  transition: 1s;
+}

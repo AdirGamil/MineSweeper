@@ -6,12 +6,10 @@ function getRandomInt(min, max) {
 }
 
 function getClassName(location) {
-  const cellClass = 'cell-' + location.i + '-' + location.j
-  return cellClass
+  return `cell-${location.i}-${location.j}`
 }
 
 function startTimer() {
-  isTimerStarted = true
   gStartTime = Date.now()
 
   gTimerInterval = setInterval(() => {
@@ -23,13 +21,63 @@ function startTimer() {
 
 function resetTimer() {
   clearInterval(gTimerInterval)
+  gStartTime = null
   var elSpan = document.querySelector('.timer')
   elSpan.innerText = '0.00'
 }
 
 function chooseLvlSize(level, mines) {
-  // resetTimer()
   gLevel.SIZE = level
   gLevel.MINES = mines
-  onInit()
+  resetGame()
+}
+
+function resetGame() {
+  gLife = 3
+  var lifeElement = document.querySelector('.lifeBoard span')
+  if (lifeElement) {
+    lifeElement.innerText = `${gLife}`
+  }
+  gFirstClicked = true
+  gGame = {
+    isOn: false,
+    shownCount: 0,
+    markedCount: 0,
+    secsPassed: 0,
+  }
+  resetTimer()
+  gBoard = buildBoard(gLevel.SIZE)
+  createMinesOnBoard(gBoard, gLevel.MINES)
+  setMinesNegsCount(gBoard)
+  renderBoard(gBoard)
+  var scoreElement = document.querySelector('.score')
+  if (scoreElement) {
+    scoreElement.innerText = ''
+  }
+  var restartBtnElement = document.querySelector('.restart-btn')
+  if (restartBtnElement) {
+    restartBtnElement.innerText = '😀'
+  }
+}
+
+function victory() {
+  clearInterval(gTimerInterval)
+  document.querySelector('.score').innerText = `Victory!`
+  document.querySelector('.restart-btn').innerText = `😎`
+}
+
+function onToggleMode() {
+  var toggleBtn = document.querySelector('.darkMode')
+  var changeBodyColor = document.querySelector('body')
+  isDarkMode = !isDarkMode
+
+  if (isDarkMode) {
+    changeBodyColor.style.backgroundColor = 'lightblue'
+    toggleBtn.style.backgroundColor = 'white'
+    toggleBtn.innerText = '☀️'
+  } else {
+    changeBodyColor.style.backgroundColor = 'gray'
+    toggleBtn.style.backgroundColor = 'black'
+    toggleBtn.innerText = '🌙'
+  }
 }

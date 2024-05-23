@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body onload="onInit()">
-    
-    
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body onload="onInit()">
     <div class="level">
-        <h3>CHOOSE DIFFICULTY</h3>
-        <div class="btn-dif-container">
-            <button onclick="chooseLvlSize(4, 3)">Beginner</button>
-            <button onclick="chooseLvlSize(8, 14)">MEDIUM</button>
-            <button onclick="chooseLvlSize(12, 32)">Exprert</button>
-        </div>
+      <h3>CHOOSE DIFFICULTY</h3>
+      <div class="btn-dif-container">
+        <button onclick="chooseLvlSize(4, 3)">Beginner</button>
+        <button onclick="chooseLvlSize(8, 14)">MEDIUM</button>
+        <button onclick="chooseLvlSize(12, 32)">Exprert</button>
+      </div>
     </div>
-    
+    <div class="darkBtn">
+      <button class="darkMode" onclick="onToggleMode()">🌙</button>
+    </div>
+
     <div class="mid-container">
-        
-        
-        <div class="lifeBoard">Your Life : <span>3</span></div>
-        <div class="block"> COMPLETED IN: <span class="timer">0.00</span></div>
-        <div class="score">Your Score: <span>0</span></div>
+      <div class="lifeBoard">Your Life : <span>3</span></div>
+      <div class="block">COMPLETED IN: <span class="timer">0.00</span></div>
+      <div class="score"></div>
     </div>
     <div class="modal">
-        <h3 class="msg"></h3>
-        <button class="restart-btn" onclick="onInit()">😊</button>
+      <h3 class="msg"></h3>
+      <button class="restart-btn" onclick="resetGame()">😊</button>
     </div>
-    
-   <div class="game">
-       <table>
-           <tbody class="board">
-        </tbody>
-    </table>
-</div>
 
-<div class="bottom">Created by Adir Gamil</div>
+    <div class="game">
+      <table>
+        <tbody class="board"></tbody>
+      </table>
+    </div>
 
+    <div class="bottom">Created by Adir Gamil</div>
 
     <script src="js/utils.js"></script>
+    <script src="js/mines.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
