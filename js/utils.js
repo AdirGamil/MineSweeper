@@ -1,5 +1,5 @@
 'use strict'
-console.log('exutils')
+console.log('utils')
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -47,8 +47,6 @@ function resetGame() {
   }
   resetTimer()
   gBoard = buildBoard(gLevel.SIZE)
-  createMinesOnBoard(gBoard, gLevel.MINES)
-  setMinesNegsCount(gBoard)
   renderBoard(gBoard)
   var scoreElement = document.querySelector('.score')
   if (scoreElement) {
@@ -68,16 +66,21 @@ function victory() {
 
 function onToggleMode() {
   var toggleBtn = document.querySelector('.darkMode')
+  var footer = document.querySelector('.footer')
   var changeBodyColor = document.querySelector('body')
   isDarkMode = !isDarkMode
 
   if (isDarkMode) {
-    changeBodyColor.style.backgroundColor = 'lightblue'
-    toggleBtn.style.backgroundColor = 'white'
-    toggleBtn.innerText = '☀️'
-  } else {
     changeBodyColor.style.backgroundColor = 'gray'
     toggleBtn.style.backgroundColor = 'black'
+    footer.style.backgroundColor = 'black'
+    footer.style.color = 'white'
+    toggleBtn.innerText = '☀️'
+  } else {
+    changeBodyColor.style.backgroundColor = 'lightblue'
+    footer.style.backgroundColor = 'lightgreen'
+    footer.style.color = 'black'
+    toggleBtn.style.backgroundColor = 'white'
     toggleBtn.innerText = '🌙'
   }
 }

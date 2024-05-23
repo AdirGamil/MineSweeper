@@ -1,5 +1,6 @@
 body {
   background-color: lightblue;
+  transition: 1.5s;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -34,12 +35,13 @@ td:hover {
   padding: 10px;
 }
 
-.bottom {
+.footer {
   background-color: lightgreen;
   width: 50%;
-  border: 2px solid blue;
+  border: 2px solid white;
   padding: 10px;
   text-align: center;
+  transition: 1.5s;
 }
 
 .mine {

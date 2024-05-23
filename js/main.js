@@ -7,7 +7,6 @@ const FLAG = '🚩'
 
 var gBoard
 var gLevel
-var gSize
 var gGame
 var gLife = 3
 var gStartTime
@@ -17,7 +16,7 @@ var gFirstClicked = true
 
 var gLevel = {
   SIZE: 4,
-  MINES: 3,
+  MINES: 2,
 }
 var gGame = {
   isOn: false,
@@ -31,8 +30,6 @@ function onInit() {
   resetTimer()
 
   gBoard = buildBoard(gLevel.SIZE)
-  createMinesOnBoard(gBoard, gLevel.MINES)
-  setMinesNegsCount(gBoard)
   renderBoard(gBoard)
 }
 
@@ -49,9 +46,6 @@ function buildBoard(size) {
       }
     }
   }
-  // board[1][1].isMine = true
-  // board[2][1].isMine = true
-  // board[3][1].isMine = true
   return board
 }
 
@@ -92,6 +86,8 @@ function onCellClicked(elCell, i, j) {
     startTimer()
     gGame.isOn = true
     gFirstClicked = false
+    createMinesOnBoard(gBoard, gLevel.MINES, i, j)
+    setMinesNegsCount(gBoard)
   }
   var cell = gBoard[i][j]
   if (cell.isShown) return
@@ -103,11 +99,10 @@ function onCellClicked(elCell, i, j) {
     checkLose()
   } else {
     gGame.shownCount++
-    // if (gGame.shownCount === 3) {
-    //   gGame.isOn = false
-    //   victory()
-    // }
-    console.log('gGame.shownCount:', gGame.shownCount)
+    if (!cell.minesAroundCount) {
+      expandShown(gBoard, i, j)
+    }
+    checkVictory()
   }
   if (!gLife) {
     checkLose()
@@ -124,7 +119,6 @@ function onCellMarked(elCell, i, j) {
   if (!cell.isMarked) {
     cell.isMarked = true
     gGame.markedCount++
-    console.log('gGame.markedCount:', gGame.markedCount)
   } else {
     cell.isMarked = false
     gGame.markedCount--
@@ -146,22 +140,21 @@ function checkLose() {
 
 function checkVictory() {
   var currFlags = 0
+  var allCellsShown = true
   for (var i = 0; i < gBoard.length; i++) {
     for (var j = 0; j < gBoard.length; j++) {
       var cell = gBoard[i][j]
       if (cell.isMine && cell.isMarked) currFlags++
+      if (!cell.isMine && !cell.isShown) {
+        allCellsShown = false
+      }
     }
   }
-  if (currFlags === gLevel.MINES && gGame.markedCount === gLevel.MINES) {
+
+  if (
+    (currFlags === gLevel.MINES && gGame.markedCount === gLevel.MINES) ||
+    allCellsShown
+  ) {
     victory()
   }
 }
-
-// #####################TODO####################################################
-//  1. First click is never a Mine
-// The first clicked cell is never a mine
-// HINT: We need to start with an empty matrix (no mines) and
-// then place the mines and count the neighbors only on first
-// click
-
-// 2. fix when mine shown, cant win the game if the other cells showns
