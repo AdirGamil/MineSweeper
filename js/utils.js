@@ -34,9 +34,9 @@ function chooseLvlSize(level, mines) {
 
 function resetGame() {
   gLife = 3
-  var lifeElement = document.querySelector('.lifeBoard span')
-  if (lifeElement) {
-    lifeElement.innerText = `${gLife}`
+  var elLife = document.querySelector('.lifeBoard span')
+  if (elLife) {
+    elLife.innerText = `${gLife}`
   }
   gFirstClicked = true
   gGame = {
@@ -48,17 +48,17 @@ function resetGame() {
   resetTimer()
   gBoard = buildBoard(gLevel.SIZE)
   renderBoard(gBoard)
-  var scoreElement = document.querySelector('.score')
-  if (scoreElement) {
-    scoreElement.innerText = ''
+  var elScore = document.querySelector('.score')
+  if (elScore) {
+    elScore.innerText = ''
   }
-  var restartBtnElement = document.querySelector('.restart-btn')
-  if (restartBtnElement) {
-    restartBtnElement.innerText = '😀'
+  var elRestartBtn = document.querySelector('.restart-btn')
+  if (elRestartBtn) {
+    elRestartBtn.innerText = '😀'
   }
 }
 
-function victory() {
+function isVictory() {
   clearInterval(gTimerInterval)
   document.querySelector('.score').innerText = `Victory!`
   document.querySelector('.restart-btn').innerText = `😎`

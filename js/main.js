@@ -155,6 +155,6 @@ function checkVictory() {
     (currFlags === gLevel.MINES && gGame.markedCount === gLevel.MINES) ||
     allCellsShown
   ) {
-    victory()
+    isVictory()
   }
 }
